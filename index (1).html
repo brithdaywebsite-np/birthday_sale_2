@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Happy Birthday, Dada 🌼</title>
+<meta name="theme-color" content="#4a0c1a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rozha+One&family=Caveat:wght@500;600&family=Mukta:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --maroon:#4a0c1a;
+  --maroon-2:#6b1428;
+  --marigold:#f5a400;
+  --saffron:#ff7a1a;
+  --tika:#d4112e;
+  --paper:#fff4e6;
+  --ink:#3a1018;
+  --display:"Rozha One","Playfair Display",Georgia,serif;
+  --hand:"Caveat","Segoe Script","Bradley Hand",cursive;
+  --body:"Mukta","Segoe UI",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  min-height:100vh;min-height:100dvh;
+  background:radial-gradient(120% 80% at 50% 0%,var(--maroon-2) 0%,var(--maroon) 60%,#2e0610 100%) fixed;
+  color:var(--paper);font-family:var(--body);overflow-x:hidden;
+  padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom);
+}
+/* garland */
+.garland{position:absolute;top:0;left:0;right:0;height:84px;display:flex;justify-content:center;pointer-events:none;overflow:hidden}
+.garland svg{width:max(100%,720px);height:84px;flex:none}
+/* petals */
+#petals{position:fixed;inset:0;pointer-events:none;z-index:1;overflow:hidden}
+.petal{position:absolute;top:-30px;width:12px;height:16px;border-radius:70% 0 70% 0;opacity:.85;animation:fall linear infinite}
+@keyframes fall{to{transform:translate3d(var(--dx),110vh,0) rotate(var(--rot))}}
+
+main{position:relative;z-index:2}
+.stage{min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:110px 24px 48px}
+.hello{font-family:var(--hand);font-size:clamp(24px,6vw,32px);color:var(--marigold)}
+h1{font-family:var(--display);font-weight:400;line-height:1;margin:6px 0 4px;font-size:clamp(46px,14vw,104px);letter-spacing:.01em}
+h1 .name{display:block;color:var(--marigold);font-size:1.18em}
+
+/* tika button */
+.tika{
+  margin:34px 0 14px;width:112px;height:112px;border-radius:50%;border:0;cursor:pointer;position:relative;
+  background:radial-gradient(circle at 35% 30%,#ff4a5f,var(--tika) 55%,#8e0a1e);
+  box-shadow:0 0 0 8px rgba(245,164,0,.18),0 0 0 9px rgba(245,164,0,.5),0 14px 34px rgba(0,0,0,.45);
+  animation:beat 2.4s ease-in-out infinite;transition:transform .3s;
+}
+.tika::after{ /* rice grains */
+  content:"";position:absolute;inset:-22px;border-radius:50%;
+  background:
+   radial-gradient(circle,var(--paper) 2px,transparent 2.5px) 50% 0/ 100% 100% no-repeat;
+}
+.tika:hover{transform:scale(1.06)}
+.tika:focus-visible{outline:3px solid var(--paper);outline-offset:6px}
+@keyframes beat{50%{transform:scale(1.07)}}
+.tap{font-family:var(--hand);font-size:26px;color:var(--paper);opacity:.9}
+
+/* seven-colour tika stripe */
+.stripe{display:flex;width:170px;height:6px;border-radius:3px;overflow:hidden;margin:26px auto}
+.stripe i{flex:1}
+
+/* letter */
+.letter-wrap{display:none;padding:0 18px 90px}
+.letter-wrap.open{display:block}
+.letter{
+  position:relative;max-width:620px;margin:0 auto;
+  background:var(--paper);color:var(--ink);border-radius:6px;
+  padding:44px 28px 38px;box-shadow:0 30px 60px rgba(0,0,0,.5);
+  border-top:10px solid var(--marigold);
+  transform-origin:top center;animation:unfold .9s cubic-bezier(.2,.8,.2,1) both;
+}
+@keyframes unfold{from{transform:perspective(900px) rotateX(-70deg);opacity:0}to{transform:none;opacity:1}}
+.letter::before{ /* tika mark on the paper */
+  content:"";position:absolute;top:-24px;left:50%;width:28px;height:28px;margin-left:-14px;border-radius:50%;
+  background:radial-gradient(circle at 35% 30%,#ff4a5f,var(--tika));box-shadow:0 0 0 4px var(--paper)
+}
+.letter p{font-family:var(--hand);font-size:clamp(23px,5.4vw,29px);line-height:1.38;margin-bottom:20px;font-weight:500;
+  opacity:0;transform:translateY(8px);transition:opacity .8s,transform .8s}
+.letter p.in{opacity:1;transform:none}
+.letter .to{font-family:var(--display);font-size:clamp(28px,7vw,38px);color:var(--tika);line-height:1.1;margin-bottom:18px}
+.letter .bday{font-family:var(--display);font-size:clamp(22px,5.4vw,28px);color:var(--maroon);line-height:1.25}
+.letter mark{background:linear-gradient(transparent 58%,rgba(245,164,0,.55) 58%);color:inherit}
+.sign{text-align:right;margin-top:26px}
+.sign .xo{font-family:var(--hand);font-size:28px}
+.sign .who{font-family:var(--display);font-size:32px;color:var(--tika);line-height:1.1}
+.heart{display:inline-block;color:var(--tika);animation:beat 1.6s ease-in-out infinite}
+.actions{text-align:center;margin-top:34px}
+.btn{
+  font:600 17px var(--body);color:var(--maroon);background:var(--marigold);border:0;border-radius:999px;
+  padding:14px 28px;cursor:pointer;box-shadow:0 8px 20px rgba(245,164,0,.35);transition:transform .2s
+}
+.btn:hover{transform:translateY(-2px)}
+.btn:active{transform:scale(.97)}
+.btn:focus-visible{outline:3px solid var(--paper);outline-offset:4px}
+canvas#fx{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:5}
+@media (min-width:700px){.letter{padding:58px 56px 50px}}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .letter p{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<div class="garland" aria-hidden="true"><svg id="garland" viewBox="0 0 720 84" preserveAspectRatio="xMidYMin slice"></svg></div>
+<div id="petals" aria-hidden="true"></div>
+<canvas id="fx" aria-hidden="true"></canvas>
+
+<main>
+  <section class="stage" id="cover">
+    <p class="hello">A little note for you</p>
+    <h1>Happy Birthday<span class="name">Dada</span></h1>
+    <button class="tika" id="open" aria-label="Open your birthday wish"></button>
+    <p class="tap">tap the tika to open</p>
+    <div class="stripe" aria-hidden="true">
+      <i style="background:#d4112e"></i><i style="background:#ff7a1a"></i><i style="background:#f5a400"></i>
+      <i style="background:#2e9e4f"></i><i style="background:#2b7de9"></i><i style="background:#5b3bb5"></i><i style="background:#fff4e6"></i>
+    </div>
+  </section>
+
+  <section class="letter-wrap" id="letterWrap">
+    <article class="letter" id="letter">
+      <p class="to">Dearest dada,</p>
+      <p class="bday">Happiest birthday dada. May God bless you.</p>
+      <p>May your dreams be fulfilled, life be filled with laughter, and embrace with a smile on ya face.</p>
+      <p>Your bunu lovess yaa and misses yaa a loadss. Honestly it's not same without ya in here. Even the <mark>vai tika</mark> isn't the same without yaa.</p>
+      <p>It's yet another year without you but if it's for your success the sacrifice is worth it. I really hope you're doing great.</p>
+      <p>Even if everyone expects things great just do what makes you happy and jolly. If ya 'eed shoulder to cry on yk never hesitate to reach out to me.</p>
+      <p>I wish all the happiness, joy and success from the bottom of my heart. Remember you mean a lott to me.</p>
+      <p class="sign"><span class="xo">xo,</span><br><span class="who">Krijaa bunu</span> <span class="heart">♥</span></p>
+      <div class="actions"><button class="btn" id="again">Celebrate again 🎉</button></div>
+    </article>
+  </section>
+</main>
+
+<script>
+(function(){
+  var COLORS=['#f5a400','#ff7a1a','#d4112e','#ffd24a','#fff4e6'];
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* marigold garland (malla) */
+  var g=document.getElementById('garland'),s='';
+  s+='<path d="M0 6 Q90 70 180 6 T360 6 T540 6 T720 6" fill="none" stroke="#2e7d32" stroke-width="2.5"/>';
+  for(var i=0;i<=24;i++){
+    var x=i*30,t=(i%6)/6,y=6+Math.sin(t*Math.PI)*0+0;
+    // follow the sagging curve: each 180px arc
+    var u=(x%180)/180,yy=6+4*u*(1-u)*58;
+    var c=i%2?'#f5a400':'#ff7a1a';
+    s+='<g transform="translate('+x+' '+yy.toFixed(1)+')">';
+    for(var k=0;k<8;k++){s+='<ellipse cx="0" cy="-8" rx="4.5" ry="8" fill="'+c+'" transform="rotate('+(k*45)+')"/>';}
+    s+='<circle r="4.5" fill="#b8470a"/></g>';
+  }
+  g.innerHTML=s;
+
+  /* falling petals */
+  if(!reduce){
+    var box=document.getElementById('petals');
+    for(var p=0;p<16;p++){
+      var el=document.createElement('span');el.className='petal';
+      el.style.left=Math.random()*100+'%';
+      el.style.background=COLORS[p%3];
+      el.style.setProperty('--dx',(Math.random()*120-60)+'px');
+      el.style.setProperty('--rot',(Math.random()*720-360)+'deg');
+      el.style.animationDuration=(9+Math.random()*9)+'s';
+      el.style.animationDelay=(-Math.random()*14)+'s';
+      box.appendChild(el);
+    }
+  }
+
+  /* confetti */
+  var cv=document.getElementById('fx'),cx=cv.getContext('2d'),bits=[],raf=null;
+  function size(){var d=window.devicePixelRatio||1;cv.width=innerWidth*d;cv.height=innerHeight*d;cx.setTransform(d,0,0,d,0,0)}
+  size();addEventListener('resize',size);
+  function burst(){
+    if(reduce)return;
+    for(var i=0;i<130;i++){
+      var a=Math.random()*Math.PI*2,v=6+Math.random()*9;
+      bits.push({x:innerWidth/2,y:innerHeight*.45,vx:Math.cos(a)*v,vy:Math.sin(a)*v-6,
+        w:6+Math.random()*7,h:4+Math.random()*6,r:Math.random()*6,vr:(Math.random()-.5)*.4,
+        c:COLORS[(Math.random()*COLORS.length)|0],life:1});
+    }
+    if(!raf)raf=requestAnimationFrame(tick);
+  }
+  function tick(){
+    cx.clearRect(0,0,innerWidth,innerHeight);
+    bits=bits.filter(function(b){return b.life>0&&b.y<innerHeight+30});
+    bits.forEach(function(b){
+      b.vy+=.28;b.vx*=.99;b.x+=b.vx;b.y+=b.vy;b.r+=b.vr;b.life-=.006;
+      cx.save();cx.globalAlpha=Math.max(b.life,0);cx.translate(b.x,b.y);cx.rotate(b.r);
+      cx.fillStyle=b.c;cx.fillRect(-b.w/2,-b.h/2,b.w,b.h);cx.restore();
+    });
+    raf=bits.length?requestAnimationFrame(tick):null;
+    if(!raf)cx.clearRect(0,0,innerWidth,innerHeight);
+  }
+
+  /* open letter */
+  var wrap=document.getElementById('letterWrap'),paras=document.querySelectorAll('.letter p');
+  function reveal(){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}});
+    },{threshold:.25});
+    paras.forEach(function(p,i){p.style.transitionDelay=(i<2?i*0.35:0)+'s';io.observe(p)});
+  }
+  document.getElementById('open').addEventListener('click',function(){
+    document.getElementById('cover').style.display='none';
+    wrap.classList.add('open');
+    scrollTo(0,0);
+    reveal();burst();
+  });
+  document.getElementById('again').addEventListener('click',burst);
+})();
+</script>
+</body>
+</html>
